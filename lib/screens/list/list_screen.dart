@@ -1,4 +1,5 @@
 import 'package:dicti/model/word_response.dart';
+import 'package:dicti/screens/details/details_screen.dart';
 import 'package:flutter/material.dart';
 
 class ListScreen extends StatelessWidget {
@@ -19,6 +20,14 @@ class ListScreen extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsScreen(words[index]),
+                ),
+              );
+            },
           );
         },
         separatorBuilder: (context, index) => Divider(color: Colors.grey),
