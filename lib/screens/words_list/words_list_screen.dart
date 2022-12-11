@@ -1,6 +1,6 @@
 import 'package:dicti/extensions/string_casing_extension.dart';
 import 'package:dicti/model/word_response.dart';
-import 'package:dicti/screens/details/details_screen.dart';
+import 'package:dicti/screens/word_details/word_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class WordsListScreen extends StatelessWidget {
@@ -37,7 +37,7 @@ class WordsListScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DetailsScreen(words[index]),
+                    builder: (context) => WordDetailsScreen(words[index]),
                   ),
                 );
               },
