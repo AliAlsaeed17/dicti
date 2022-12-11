@@ -41,7 +41,7 @@ class DetailsScreen extends StatelessWidget {
                             Text("Definition: " +
                                 defenitions![index].definition!),
                             SizedBox(height: 8),
-                            Text("Example: " + defenitions![index].example!),
+                            Text("Example: " + defenitions[index].example!),
                           ],
                         ),
                         separatorBuilder: (context, index) =>
