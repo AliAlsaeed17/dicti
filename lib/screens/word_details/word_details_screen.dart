@@ -9,7 +9,7 @@ class WordDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey[900],
+      backgroundColor: Colors.blueGrey,
       body: Container(
         height: 1500,
         width: double.infinity,

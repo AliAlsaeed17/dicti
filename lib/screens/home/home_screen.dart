@@ -79,6 +79,7 @@ class HomeScreen extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 cubit.getWordSearched();
+                //Navigator.push(context, MaterialPageRoute(builder: (context) => WordsListScreen(words) ));
               },
               style: ElevatedButton.styleFrom(
                   primary: Colors.deepOrangeAccent,
