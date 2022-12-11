@@ -43,7 +43,7 @@ class DetailsScreen extends StatelessWidget {
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                "Definition: ${defenitions![index].definition!}" ??
+                                "${index + 1}. Definition: ${defenitions![index].definition!}" ??
                                     "",
                                 style: TextStyle(
                                   color: Colors.white,
@@ -52,15 +52,18 @@ class DetailsScreen extends StatelessWidget {
                             ),
                             SizedBox(height: 8),
                             Text(
-                              "Example: ${defenitions[index].example}" ?? "",
+                              defenitions[index].example != null
+                                  ? "    Example: ${defenitions[index].example}"
+                                  : "",
                               style: TextStyle(
                                 color: Colors.white,
                               ),
                             ),
+                            SizedBox(height: 12),
                           ],
                         ),
                         separatorBuilder: (context, index) =>
-                            SizedBox(height: 8),
+                            SizedBox(height: 13),
                         itemCount: defenitions!.length,
                         shrinkWrap: true,
                         physics: ScrollPhysics(),
@@ -68,7 +71,7 @@ class DetailsScreen extends StatelessWidget {
                     ],
                   );
                 },
-                separatorBuilder: (context, index) => SizedBox(height: 32),
+                separatorBuilder: (context, index) => SizedBox(height: 15),
                 itemCount: wordResponse.meanings!.length,
                 //physics: ScrollPhysics(),
               ),
