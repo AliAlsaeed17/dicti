@@ -12,12 +12,17 @@ class WordSearchCubit extends Cubit<DictionaryState> {
 
   Future getWordSearched() async {
     emit(WordSearchingState());
-    final words =
-        await _repository.getWordsFromDictionary(_queryController.text);
-    if (words == null) {
-      emit(Errorstate());
-    } else {
-      emit(WordSearchedState(words));
+    try {
+      final words =
+          await _repository.getWordsFromDictionary(_queryController.text);
+      if (words == null) {
+        emit(Errorstate("There is some issue"));
+      } else {
+        emit(WordSearchedState(words));
+      }
+    } catch (err) {
+      print(err);
+      emit(Errorstate(err.toString()));
     }
   }
 }
@@ -34,4 +39,8 @@ class WordSearchedState extends DictionaryState {
   WordSearchedState(this.words);
 }
 
-class Errorstate extends DictionaryState {}
+class Errorstate extends DictionaryState {
+  final String message;
+
+  Errorstate(this.message);
+}
