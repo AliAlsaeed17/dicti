@@ -1,7 +1,8 @@
 import 'package:dicti/bloc/word_search_cubit.dart';
-import 'package:dicti/screens/list/list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../words_list/words_list_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -13,7 +14,7 @@ class HomeScreen extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ListScreen(state.words),
+              builder: (context) => WordsListScreen(state.words),
             ),
           );
         }
