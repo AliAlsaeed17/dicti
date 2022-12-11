@@ -1,10 +1,10 @@
 import 'package:dicti/model/word_response.dart';
 import 'package:flutter/material.dart';
 
-class DetailsScreen extends StatelessWidget {
+class WordDetailsScreen extends StatelessWidget {
   final WordResponse wordResponse;
 
-  DetailsScreen(this.wordResponse);
+  WordDetailsScreen(this.wordResponse);
 
   @override
   Widget build(BuildContext context) {
