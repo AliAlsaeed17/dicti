@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
       },
       bloc: cubit,
       child: Scaffold(
-        backgroundColor: Colors.blueAccent[900],
+        backgroundColor: Colors.blueGrey,
         body: cubit.state is WordSearchingState
             ? getLoadingWidget()
             : cubit.state is Errorstate
@@ -54,16 +54,16 @@ class HomeScreen extends StatelessWidget {
               fontSize: 14,
             ),
           ),
-          SizedBox(height: 32),
+          SizedBox(height: 35),
           TextField(
             controller: cubit.queryController,
             decoration: InputDecoration(
               hintText: "Search a word",
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.circular(20),
                 borderSide: BorderSide(color: Colors.transparent),
               ),
-              fillColor: Colors.grey[100],
+              fillColor: Colors.grey.shade300,
               filled: true,
               prefixIcon: Icon(Icons.search),
               hintStyle: TextStyle(color: Colors.white),
@@ -72,14 +72,19 @@ class HomeScreen extends StatelessWidget {
           Spacer(),
           Container(
             width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+            ),
             child: ElevatedButton(
               onPressed: () {
                 cubit.getWordSearched();
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.deepOrangeAccent,
-                padding: EdgeInsets.all(16),
-              ),
+                  primary: Colors.deepOrangeAccent,
+                  padding: EdgeInsets.all(16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  )),
               child: Text("Search"),
             ),
           ),
@@ -89,7 +94,10 @@ class HomeScreen extends StatelessWidget {
   }
 
   getLoadingWidget() {
-    return Center(child: CircularProgressIndicator());
+    return Center(
+        child: CircularProgressIndicator(
+      color: Colors.deepOrangeAccent,
+    ));
   }
 
   getErrorWidget(message) {
