@@ -11,8 +11,9 @@ class DetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blueGrey[900],
       body: Container(
-        padding: EdgeInsets.all(32),
+        height: 1500,
         width: double.infinity,
+        padding: EdgeInsets.all(40),
         child: Column(
           children: [
             Text(
@@ -24,6 +25,7 @@ class DetailsScreen extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Expanded(
+              flex: 2,
               child: ListView.separated(
                 itemBuilder: (context, index) {
                   final meanings = wordResponse.meanings![index];
@@ -38,24 +40,37 @@ class DetailsScreen extends StatelessWidget {
                       ListView.separated(
                         itemBuilder: (context, index) => Column(
                           children: [
-                            Text("Definition: " +
-                                    defenitions![index].definition! ??
-                                ""),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "Definition: ${defenitions![index].definition!}" ??
+                                    "",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
                             SizedBox(height: 8),
-                            Text("Example: " + defenitions[index].example! ??
-                                ""),
+                            Text(
+                              "Example: ${defenitions[index].example}" ?? "",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
                           ],
                         ),
                         separatorBuilder: (context, index) =>
                             SizedBox(height: 8),
                         itemCount: defenitions!.length,
                         shrinkWrap: true,
+                        physics: ScrollPhysics(),
                       ),
                     ],
                   );
                 },
                 separatorBuilder: (context, index) => SizedBox(height: 32),
                 itemCount: wordResponse.meanings!.length,
+                //physics: ScrollPhysics(),
               ),
             ),
           ],
