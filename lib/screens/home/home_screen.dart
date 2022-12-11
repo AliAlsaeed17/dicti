@@ -5,9 +5,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final cubit = context.watch<WordSearchCubit>();
     return Scaffold(
       backgroundColor: Colors.blueAccent[900],
-      body: getDictionaryFormWidget(context),
+      body: cubit.state is WordSearchingState
+          ? getLoadingWidget()
+          : cubit.state is Errorstate
+              ? getErrorWidget("Error in getting data")
+              : cubit.state is NoWordSearchedState
+                  ? getDictionaryFormWidget(context)
+                  : Container(),
     );
   }
 
