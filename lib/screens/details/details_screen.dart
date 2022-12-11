@@ -39,9 +39,11 @@ class DetailsScreen extends StatelessWidget {
                         itemBuilder: (context, index) => Column(
                           children: [
                             Text("Definition: " +
-                                defenitions![index].definition ?? ""),
+                                    defenitions![index].definition! ??
+                                ""),
                             SizedBox(height: 8),
-                            Text("Example: " + defenitions[index].example ?? ""),
+                            Text("Example: " + defenitions[index].example! ??
+                                ""),
                           ],
                         ),
                         separatorBuilder: (context, index) =>
