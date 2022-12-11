@@ -1,4 +1,5 @@
 import 'package:dicti/bloc/word_search_cubit.dart';
+import 'package:dicti/screens/list/list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -6,15 +7,28 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.watch<WordSearchCubit>();
-    return Scaffold(
-      backgroundColor: Colors.blueAccent[900],
-      body: cubit.state is WordSearchingState
-          ? getLoadingWidget()
-          : cubit.state is Errorstate
-              ? getErrorWidget("Error in getting data")
-              : cubit.state is NoWordSearchedState
-                  ? getDictionaryFormWidget(context)
-                  : Container(),
+    return BlocListener(
+      listener: (context, state) {
+        if (state is WordSearchedState && state.words != null) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ListScreen(state.words),
+            ),
+          );
+        }
+      },
+      bloc: cubit,
+      child: Scaffold(
+        backgroundColor: Colors.blueAccent[900],
+        body: cubit.state is WordSearchingState
+            ? getLoadingWidget()
+            : cubit.state is Errorstate
+                ? getErrorWidget("Error in getting data")
+                : cubit.state is NoWordSearchedState
+                    ? getDictionaryFormWidget(context)
+                    : Container(),
+      ),
     );
   }
 
