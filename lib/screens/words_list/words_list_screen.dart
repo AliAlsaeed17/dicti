@@ -2,10 +2,10 @@ import 'package:dicti/model/word_response.dart';
 import 'package:dicti/screens/details/details_screen.dart';
 import 'package:flutter/material.dart';
 
-class ListScreen extends StatelessWidget {
+class WordsListScreen extends StatelessWidget {
   List<WordResponse> words;
 
-  ListScreen(this.words);
+  WordsListScreen(this.words);
 
   @override
   Widget build(BuildContext context) {
