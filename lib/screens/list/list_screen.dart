@@ -13,7 +13,12 @@ class ListScreen extends StatelessWidget {
       body: ListView.separated(
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(words[index].word!),
+            title: Text(
+              "${index + 1}. ${words[index].word!}",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
           );
         },
         separatorBuilder: (context, index) => Divider(color: Colors.grey),
