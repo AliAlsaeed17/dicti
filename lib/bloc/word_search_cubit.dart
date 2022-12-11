@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WordSearchCubit extends Cubit<DictionaryState> {
   final WordRepository _repository;
-  final TextEditingController _queryController = TextEditingController();
+  final TextEditingController queryController = TextEditingController();
 
   WordSearchCubit(this._repository) : super(NoWordSearchedState());
 
@@ -14,7 +14,7 @@ class WordSearchCubit extends Cubit<DictionaryState> {
     emit(WordSearchingState());
     try {
       final words =
-          await _repository.getWordsFromDictionary(_queryController.text);
+          await _repository.getWordsFromDictionary(queryController.text);
       if (words == null) {
         emit(Errorstate("There is some issue"));
       } else {

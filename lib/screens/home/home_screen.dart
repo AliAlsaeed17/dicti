@@ -1,4 +1,6 @@
+import 'package:dicti/bloc/word_search_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -9,7 +11,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  getDictionaryFormWidget(context) {
+  getDictionaryFormWidget(BuildContext context) {
+    final cubit = context.watch<WordSearchCubit>();
     return Container(
       padding: EdgeInsets.all(16),
       child: Column(
@@ -32,6 +35,7 @@ class HomeScreen extends StatelessWidget {
           ),
           SizedBox(height: 32),
           TextField(
+            controller: cubit.queryController,
             decoration: InputDecoration(
               hintText: "Search a word",
               border: OutlineInputBorder(
@@ -48,7 +52,9 @@ class HomeScreen extends StatelessWidget {
           Container(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                cubit.getWordSearched();
+              },
               style: ElevatedButton.styleFrom(
                 primary: Colors.deepOrangeAccent,
                 padding: EdgeInsets.all(16),
@@ -58,6 +64,16 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  getLoadingWidget() {
+    return Center(child: CircularProgressIndicator());
+  }
+
+  getErrorWidget(message) {
+    return Center(
+      child: Text(message),
     );
   }
 }
